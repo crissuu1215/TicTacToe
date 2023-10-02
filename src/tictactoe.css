@@ -6,16 +6,81 @@
 }
 
 .game_panel {
-  display: block;
+  display: grid;
   transition: background-color 1s;
   padding: 20px;
   margin: 25px;
-  height: 80px;
+  /* height: 80px; */
   width: 430px;
   border-radius: 15px;
   overflow: hidden;
-  & h1 {
+
+  grid-template-columns: repeat(3, 1fr);
+  /* & h1 {
     text-align: center;
+  } */
+  & .first_sec {
+    /* width: 0; */
+    display: block;
+
+    > h1 {
+      position: relative;
+      margin: auto;
+      transform: translateY(-50%);
+      top: 50%;
+      /* transition: opacity 1s; */
+      -webkit-touch-callout: none;
+      -webkit-user-select: none;
+      -khtml-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+    }
+  }
+
+  & .second_sec {
+    /* width: 0; */
+    display: block;
+    transition: opacity 0.2s;
+    & span {
+      display: block;
+      text-align: center;
+
+      -webkit-touch-callout: none;
+      -webkit-user-select: none;
+      -khtml-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+    }
+
+    > h1 {
+      margin: auto;
+      font-size: 4rem;
+      text-align: center;
+
+      -webkit-touch-callout: none;
+      -webkit-user-select: none;
+      -khtml-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+    }
+  }
+
+  & .third_sec {
+    /* width: 0; */
+    display: block;
+
+    & .restart_button {
+      position: relative;
+      float: right;
+      height: 40px;
+      width: 70px;
+      transform: translateY(-50%);
+
+      top: 50%;
+    }
   }
 }
 
@@ -61,6 +126,10 @@
 @media (prefers-color-scheme: dark) {
   .game_panel {
     border: solid 1px #5c5c5c;
+    /* color: #ffffff; */
+    & .restart_button {
+      fill: #d1d1d1;
+    }
   }
   .game_container {
     border: solid 1px #5c5c5c;
@@ -72,8 +141,12 @@
 
 @media (prefers-color-scheme: light) {
   .game_panel {
+    /* color: #5c5c5c; */
     /* color: #eeeeee; */
     border: solid 1px #d1d1d1;
+    & .restart_button {
+      fill: #5c5c5c;
+    }
   }
   .game_container {
     border: solid 1px #d1d1d1;

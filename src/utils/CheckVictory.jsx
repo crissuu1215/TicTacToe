@@ -4,7 +4,14 @@ const turns = {
   1: "X",
   2: "O",
 };
-const checkVictory = (boardList, setMessage, setPanelColor, setGameStatus) => {
+
+const checkVictory = (
+  boardList,
+  setMessage,
+  setPanelColor,
+  setGameStatus,
+  occupiedList
+) => {
   // console.log(boardList);
   const whoWin = (turn) => {
     return `${turns[turn]} Wins!`;
@@ -20,6 +27,7 @@ const checkVictory = (boardList, setMessage, setPanelColor, setGameStatus) => {
       setMessage(whoWin(boardList[`cell${1 + row}`][1]));
       setPanelColor("#00AA00");
       setGameStatus(true);
+      return;
     }
   }
   for (let col = 0; col < 3; col += 1) {
@@ -33,6 +41,7 @@ const checkVictory = (boardList, setMessage, setPanelColor, setGameStatus) => {
       setMessage(whoWin(boardList[`cell${1 + col}`][1]));
       setPanelColor("#00AA00");
       setGameStatus(true);
+      return;
     }
   }
   if (
@@ -45,6 +54,7 @@ const checkVictory = (boardList, setMessage, setPanelColor, setGameStatus) => {
     setMessage(whoWin(boardList["cell1"][1]));
     setPanelColor("#00AA00");
     setGameStatus(true);
+    return;
   }
 
   if (
@@ -57,6 +67,15 @@ const checkVictory = (boardList, setMessage, setPanelColor, setGameStatus) => {
     setMessage(whoWin(boardList["cell7"][1]));
     setPanelColor("#00AA00");
     setGameStatus(true);
+    return;
+  }
+
+  if (occupiedList.length == 9) {
+    setMessage("Draw!");
+    setPanelColor("#6e2424");
+    setGameStatus(true);
+    occupiedList = [];
+    return;
   }
 };
 
