@@ -1,0 +1,25 @@
+:root {
+  color-scheme: light, dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #303030;
+  font-family: "Pixelify Sans", cursive;
+  font-family: "Roboto", sans-serif;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    color: #303030;
+    background-color: #ffffff;
+  }
+}
+
+body {
+  margin: 0px;
+  display: flex;
+  min-width: 100vw;
+  min-height: 100vh;
+  /* min-height: 100vh; */
+  /* min-width: 500px; */
+  /* place-items: center; */
+  /* text-align: center; */
+}
