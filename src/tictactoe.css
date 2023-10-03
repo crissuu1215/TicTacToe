@@ -130,6 +130,10 @@
     & .restart_button {
       fill: #d1d1d1;
     }
+
+    & .first_sec {
+      color: white;
+    }
   }
   .game_container {
     border: solid 1px #5c5c5c;
@@ -146,6 +150,10 @@
     border: solid 1px #d1d1d1;
     & .restart_button {
       fill: #5c5c5c;
+    }
+
+    & .first_sec {
+      color: white;
     }
   }
   .game_container {

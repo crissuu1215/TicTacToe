@@ -36,20 +36,18 @@ function TicTacToe_App() {
     );
 
     handleOccupied();
-    console.log(occupiedList);
-
-    // console.log(turn);
   }, [val]);
 
-  const handleChange = (key, svg, code) => {
-    const update = { ...val, [key]: [svg, code] };
+  const handleChange = (key, svg, code, color) => {
+    const update = { ...val, [key]: [svg, code, color] };
     setVal(update);
   };
 
-  const putBoard = (a) => {
+  const putBoard = (a, i) => {
     if (val[a][1] > 0) {
       return;
     }
+
     if (gameStatus != true) {
       turn % 2 == 0
         ? (handleChange(a, X_Icon("#b3b3b3"), 1), setTurn(1))
@@ -79,12 +77,13 @@ function TicTacToe_App() {
 
       <div className="game_container">
         <div className="game_board">
-          {Object.keys(val).map((key) => (
+          {Object.keys(val).map((key, index) => (
             <div
               key={key}
               className="board_cell"
               onClick={() => {
-                putBoard(key);
+                putBoard(key, index);
+
                 // handleOccupied();
               }}
             >
