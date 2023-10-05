@@ -13,13 +13,11 @@ function GamePanel({
   origList,
   setGameStats,
   setPanelColor,
-  setOccupiedList,
   gameStats,
   turn,
 }) {
   const [visib, setVisib] = useState("hidden");
   const [visibDiv, setVisibDiv] = useState(1);
-
   const colorChange = () => {
     if (gameStats) {
       return "#ffffff";
@@ -61,7 +59,6 @@ function GamePanel({
               restart(origList);
               setGameStats(false);
               setPanelColor(null);
-              setOccupiedList([]);
               setVisib("hidden");
             }}
           />

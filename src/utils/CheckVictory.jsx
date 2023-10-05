@@ -16,6 +16,10 @@ const checkVictory = (
   const whoWin = (turn) => {
     return `${turns[turn]} Wins!`;
   };
+
+  const checkOccupied = (v, i, arr) => {
+    return arr.indexOf(v) === i;
+  };
   for (let row = 0; row < 9; row += 3) {
     if (
       boardList[`cell${1 + row}`][1] == boardList[`cell${2 + row}`][1] &&
@@ -25,9 +29,10 @@ const checkVictory = (
       boardList[`cell${3 + row}`][1] != 0
     ) {
       setMessage(whoWin(boardList[`cell${1 + row}`][1]));
-      setPanelColor("#00AA00");
+      setPanelColor("rgba(16, 221, 16,1");
       setGameStatus(true);
-      return;
+
+      return [true, [row + 1, 0, 0]];
     }
   }
   for (let col = 0; col < 3; col += 1) {
@@ -39,9 +44,10 @@ const checkVictory = (
       boardList[`cell${7 + col}`][1] != 0
     ) {
       setMessage(whoWin(boardList[`cell${1 + col}`][1]));
-      setPanelColor("#00AA00");
+      setPanelColor("rgba(16, 221, 16,1");
       setGameStatus(true);
-      return;
+      // setWin([0, col + 1, 0]);
+      return [true, [0, col + 1, 0]];
     }
   }
   if (
@@ -52,9 +58,10 @@ const checkVictory = (
     boardList["cell9"][1] != 0
   ) {
     setMessage(whoWin(boardList["cell1"][1]));
-    setPanelColor("#00AA00");
+    setPanelColor("rgba(16, 221, 16,1");
     setGameStatus(true);
-    return;
+    // setWin([0, 0, 1]);
+    return [true, [0, 0, 1]];
   }
 
   if (
@@ -65,18 +72,22 @@ const checkVictory = (
     boardList["cell3"][1] != 0
   ) {
     setMessage(whoWin(boardList["cell7"][1]));
-    setPanelColor("#00AA00");
+    setPanelColor("rgba(16, 221, 16,1");
     setGameStatus(true);
-    return;
+    // setWin([0, 0, 2]);
+    return [true, [0, 0, 2]];
   }
 
-  if (occupiedList.length == 9) {
+  if (
+    occupiedList.filter(checkOccupied).length == 1 &&
+    occupiedList.filter(checkOccupied).includes(1)
+  ) {
     setMessage("Draw!");
     setPanelColor("#6e2424");
     setGameStatus(true);
-    occupiedList = [];
-    return;
+    return [true, [0, 0, 0]];
   }
+  return [false, [0, 0, 0]];
 };
 
 export default checkVictory;
