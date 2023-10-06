@@ -1,8 +1,8 @@
 import X_Icon from "../components/x_icon";
 import O_Icon from "../components/o_icon";
 const winningCode = {
-  1: X_Icon("#10dd10", 1),
-  2: O_Icon("#10dd10", 1),
+  1: X_Icon("#10dd10", 0.7),
+  2: O_Icon("#10dd10", 0.7),
 };
 export const colorizeRow = (starting, update_val, val) => {
   for (let cell = starting; cell < starting + 3; cell += 1) {
